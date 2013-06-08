@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 CMAKE_POLICY(VERSION 2.6)
 SET(CMAKE_BUILD_TYPE Debug)
 PROJECT(gogoo-panel-myzone)
-SET(PKG_VERSION 0.2.0)
+SET(PKG_VERSION 0.2.9)
 
 SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake/Modules)
 INCLUDE( ${CMAKE_SOURCE_DIR}/CMake/Modules/TargetDistclean.cmake)
@@ -39,6 +39,13 @@ ADD_SUBDIRECTORY(data)
 IF (ENABLE_DOC)
     ADD_SUBDIRECTORY(doc)
 ENDIF()
+########### Add pkgconfig target ###############
+CONFIGURE_FILE(
+  "${CMAKE_CURRENT_SOURCE_DIR}/penge.pc.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/penge.pc"
+  IMMEDIATE @ONLY)
+INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/penge.pc DESTINATION lib/pkgconfig/)
+
 
 ########### Add uninstall target ###############
 CONFIGURE_FILE(

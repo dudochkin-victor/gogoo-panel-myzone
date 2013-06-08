@@ -1,4 +1,4 @@
 [D-BUS Service]
 Name=com.meego.UX.Shell.Panels.myzone
-Exec=@PKG_LIBEXECDIR@/meego-panel-myzone
+Exec=@PKG_LIBEXECDIR@/gogoo-panel-myzone
 

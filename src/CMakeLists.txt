@@ -17,7 +17,7 @@ ADD_DEFINITIONS(-DMX_CACHE=\"$(pkgdatadir)/mx.cache\")
 ADD_DEFINITIONS(-DTHEMEDIR=\"$(pkgdatadir)/netpanel\")
 ADD_DEFINITIONS(-DGETTEXT_PACKAGE="meego-panel-web")
 
-SET (PROGRAMS meego-panel-myzone)
+SET (PROGRAMS gogoo-panel-myzone)
 
 SET(PROGRAM_SRCS
 	meego-panel-myzone.c
