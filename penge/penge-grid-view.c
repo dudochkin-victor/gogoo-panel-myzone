@@ -477,7 +477,7 @@ penge_grid_view_init (PengeGridView *self)
 
   priv->header_label = mx_label_new_with_text ("Myzone");
   clutter_actor_set_name (priv->header_label, "myzone-panel-header-label");
-  mx_table_add_actor_with_properties (MX_TABLE (self),
+  mx_table_insert_actor_with_properties (MX_TABLE (self),
                                       priv->header_label,
                                       0, 0,
                                       "x-expand", FALSE,
@@ -490,7 +490,7 @@ penge_grid_view_init (PengeGridView *self)
   clutter_actor_set_width (priv->calendar_pane, 280);
 
 
-  mx_table_add_actor (MX_TABLE (self),
+  mx_table_insert_actor (MX_TABLE (self),
                       priv->calendar_pane,
                       1,
                       0);
@@ -498,7 +498,7 @@ penge_grid_view_init (PengeGridView *self)
   priv->email_pane = g_object_new (PENGE_TYPE_EMAIL_PANE,
                                    NULL);
 
-  mx_table_add_actor (MX_TABLE (self),
+  mx_table_insert_actor (MX_TABLE (self),
                       priv->email_pane,
                       2,
                       0);
@@ -506,7 +506,7 @@ penge_grid_view_init (PengeGridView *self)
   priv->favourite_apps_pane = g_object_new (PENGE_TYPE_APPS_PANE,
                                             NULL);
 
-  mx_table_add_actor (MX_TABLE (self),
+  mx_table_insert_actor (MX_TABLE (self),
                       priv->favourite_apps_pane,
                       3,
                       0);
@@ -518,7 +518,7 @@ penge_grid_view_init (PengeGridView *self)
                error->message);
     g_clear_error (&error);
   } else {
-    mx_table_add_actor (MX_TABLE (self),
+    mx_table_insert_actor (MX_TABLE (self),
                         priv->div_tex,
                         1,
                         1);
@@ -527,7 +527,7 @@ penge_grid_view_init (PengeGridView *self)
   priv->everything_pane = g_object_new (PENGE_TYPE_EVERYTHING_PANE,
                                         NULL);
 
-  mx_table_add_actor (MX_TABLE (self), priv->everything_pane, 1, 2);
+  mx_table_insert_actor (MX_TABLE (self), priv->everything_pane, 1, 2);
 
   mx_table_set_row_spacing (MX_TABLE (self), 6);
   mx_table_set_column_spacing (MX_TABLE (self), 6);

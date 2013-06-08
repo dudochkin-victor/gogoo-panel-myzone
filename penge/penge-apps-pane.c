@@ -217,12 +217,12 @@ penge_apps_pane_update (PengeAppsPane *pane)
                             NULL);
       if (!priv->vertical)
       {
-        mx_table_add_actor (MX_TABLE (pane),
+        mx_table_insert_actor (MX_TABLE (pane),
                             actor,
                             count / ROW_SIZE,
                             count % ROW_SIZE);
       } else {
-        mx_table_add_actor (MX_TABLE (pane),
+        mx_table_insert_actor (MX_TABLE (pane),
                             actor,
                             count / 1,
                             count % 1);

@@ -256,8 +256,8 @@ penge_event_tile_init (PengeEventTile *self)
   self->priv = priv;
 
   priv->inner_table = mx_table_new ();
-  mx_bin_set_child (MX_BIN (self), (ClutterActor *)priv->inner_table);
-  mx_bin_set_fill (MX_BIN (self), TRUE, TRUE);
+  clutter_actor_add_child (self, (ClutterActor *)priv->inner_table);
+  //mx_bin_set_fill ((self), TRUE, TRUE);
 
   priv->calendar_indicator = clutter_cairo_texture_new (20, 20);
   clutter_actor_set_size (priv->calendar_indicator, 20, 20);
@@ -276,15 +276,15 @@ penge_event_tile_init (PengeEventTile *self)
   clutter_text_set_single_line_mode (CLUTTER_TEXT (tmp_text), TRUE);
 
   /* Populate the table */
-  mx_table_add_actor (MX_TABLE (priv->inner_table),
+  mx_table_insert_actor (MX_TABLE (priv->inner_table),
                       priv->calendar_indicator,
                       0,
                       0);
-  mx_table_add_actor (MX_TABLE (priv->inner_table),
+  mx_table_insert_actor (MX_TABLE (priv->inner_table),
                       priv->time_label,
                       0,
                       1);
-  mx_table_add_actor (MX_TABLE (priv->inner_table),
+  mx_table_insert_actor (MX_TABLE (priv->inner_table),
                       priv->summary_label,
                       0,
                       2);

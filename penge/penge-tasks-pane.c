@@ -17,7 +17,6 @@
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include <config.h>
 #include <glib/gi18n-lib.h>
 
 #include "penge-tasks-pane.h"
@@ -429,7 +428,7 @@ penge_tasks_pane_update (PengeTasksPane *pane)
     {
       label = mx_label_new_with_text (_("Nothing to do today"));
       priv->no_tasks_bin = mx_frame_new ();
-      mx_bin_set_child (MX_BIN (priv->no_tasks_bin),
+      clutter_actor_add_child ((priv->no_tasks_bin),
                           (ClutterActor *)label);
       clutter_container_add_actor (CLUTTER_CONTAINER (pane),
                                    priv->no_tasks_bin);

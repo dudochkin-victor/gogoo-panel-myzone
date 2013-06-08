@@ -17,7 +17,6 @@
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include <config.h>
 #include <glib/gi18n-lib.h>
 #include <penge/penge-utils.h>
 
@@ -93,7 +92,7 @@ penge_welcome_tile_init (PengeWelcomeTile *tile)
                                    PANGO_WRAP_WORD_CHAR);
   clutter_text_set_ellipsize (CLUTTER_TEXT (tmp_text),
                               PANGO_ELLIPSIZE_NONE);
-  mx_table_add_actor_with_properties (MX_TABLE (tile),
+  mx_table_insert_actor_with_properties (MX_TABLE (tile),
                                       (ClutterActor *)label,
                                       0, 0,
                                       "x-expand", TRUE,
@@ -114,7 +113,7 @@ penge_welcome_tile_init (PengeWelcomeTile *tile)
                                    PANGO_WRAP_WORD_CHAR);
   clutter_text_set_ellipsize (CLUTTER_TEXT (tmp_text),
                               PANGO_ELLIPSIZE_NONE);
-  mx_table_add_actor_with_properties (MX_TABLE (tile),
+  mx_table_insert_actor_with_properties (MX_TABLE (tile),
                                       (ClutterActor *)label,
                                       1, 0,
                                       "x-expand", TRUE,
@@ -137,11 +136,11 @@ penge_welcome_tile_init (PengeWelcomeTile *tile)
       clutter_actor_set_name (launcher, "penge-welcome-launcher");
 
       inner_table = mx_table_new ();
-      mx_bin_set_child (MX_BIN (launcher), inner_table);
+      clutter_actor_add_child ((launcher), inner_table);
 
       icon = mx_icon_new ();
       clutter_actor_set_name (icon, "penge-welcome-launcher-thumbnail");
-      mx_table_add_actor_with_properties (MX_TABLE (inner_table),
+      mx_table_insert_actor_with_properties (MX_TABLE (inner_table),
                                           icon,
                                           0, 0,
                                           "x-expand", TRUE,
@@ -152,7 +151,7 @@ penge_welcome_tile_init (PengeWelcomeTile *tile)
 
       icon = mx_icon_new ();
       clutter_actor_set_name (icon, "penge-welcome-launcher-play-button");
-      mx_table_add_actor_with_properties (MX_TABLE (inner_table),
+      mx_table_insert_actor_with_properties (MX_TABLE (inner_table),
                                           icon,
                                           0, 0,
                                           "x-expand", TRUE,
@@ -161,7 +160,7 @@ penge_welcome_tile_init (PengeWelcomeTile *tile)
                                           "y-fill", FALSE,
                                           NULL);
 
-      mx_table_add_actor_with_properties (MX_TABLE (tile),
+      mx_table_insert_actor_with_properties (MX_TABLE (tile),
                                           launcher,
                                           2, 0,
                                           "x-expand", FALSE,

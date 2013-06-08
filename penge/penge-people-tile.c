@@ -268,8 +268,8 @@ penge_people_tile_set_item (PengePeopleTile *tile,
     mx_table_set_column_spacing (MX_TABLE (inner_table), 6);
     mx_stylable_set_style_class (MX_STYLABLE (body),
                                  "PengePeopleTileContentBackground");
-    mx_bin_set_child (MX_BIN (body), inner_table);
-    mx_bin_set_fill (MX_BIN (body), TRUE, TRUE);
+    clutter_actor_add_child ((body), inner_table);
+    //mx_bin_set_fill ((body), TRUE, TRUE);
     author_icon = sw_item_get_value (item, "authoricon");
     mx_stylable_set_style_class (MX_STYLABLE (inner_table),
                                  "PengePeopleTileInnerTable");
@@ -281,11 +281,11 @@ penge_people_tile_set_item (PengePeopleTile *tile,
     }
 
     avatar_bin = mx_frame_new ();
-    mx_bin_set_child (MX_BIN (avatar_bin), avatar);
-    mx_bin_set_fill (MX_BIN (avatar_bin), TRUE, TRUE);
+    clutter_actor_add_child ((avatar_bin), avatar);
+    //mx_bin_set_fill ( (avatar_bin), TRUE, TRUE);
     mx_stylable_set_style_class (MX_STYLABLE (avatar_bin),
                                  "PengePeopleTileAvatarBackground");
-    mx_table_add_actor_with_properties (MX_TABLE (inner_table),
+    mx_table_insert_actor_with_properties (MX_TABLE (inner_table),
                                         avatar_bin,
                                         0, 0,
                                         "x-expand", FALSE,
@@ -304,7 +304,7 @@ penge_people_tile_set_item (PengePeopleTile *tile,
                       tile);
 
     mx_stylable_set_style_class (MX_STYLABLE (label), "PengePeopleTileContentLabel");
-    mx_table_add_actor_with_properties (MX_TABLE (inner_table),
+    mx_table_insert_actor_with_properties (MX_TABLE (inner_table),
                                         label,
                                         0, 1,
                                         "x-expand", TRUE,

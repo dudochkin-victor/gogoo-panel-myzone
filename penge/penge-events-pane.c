@@ -17,7 +17,6 @@
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include <config.h>
 #include <glib/gi18n-lib.h>
 
 #include "penge-events-pane.h"
@@ -401,7 +400,7 @@ penge_events_pane_update (PengeEventsPane *pane)
     {
       label = mx_label_new_with_text (_("No calendar entries this week"));
       priv->no_events_bin = mx_frame_new ();
-      mx_bin_set_child (MX_BIN (priv->no_events_bin),
+      clutter_actor_add_child ((priv->no_events_bin),
                         label);
       clutter_container_add_actor (CLUTTER_CONTAINER (pane),
                                    priv->no_events_bin);

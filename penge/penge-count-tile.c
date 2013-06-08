@@ -142,7 +142,7 @@ penge_count_tile_set_compact (PengeCountTile *self,
     clutter_container_remove_actor (CLUTTER_CONTAINER (priv->table),
                                     priv->count_label);
     clutter_actor_unparent (priv->count_label);
-    mx_bin_set_child (MX_BIN (self), priv->count_label);
+    clutter_actor_add_child ((self), priv->count_label);
 
     penge_count_tile_update_tooltip (self);
   }
@@ -157,7 +157,7 @@ penge_count_tile_set_compact (PengeCountTile *self,
                                  "row-span", 2,
                                  "x-expand", FALSE,
                                  NULL);
-    mx_bin_set_child (MX_BIN (self), priv->table);
+    clutter_actor_add_child ((self), priv->table);
 
     mx_widget_set_tooltip_text (MX_WIDGET (self), NULL);
   }
@@ -326,7 +326,7 @@ penge_count_tile_init (PengeCountTile *self)
   penge_count_tile_set_count (self, 0);
 
   clutter_actor_show (priv->count_label);
-  mx_table_add_actor_with_properties (MX_TABLE (priv->table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->table),
                                       priv->count_label,
                                       0, 0,
                                       "row-span", 2,
@@ -343,7 +343,7 @@ penge_count_tile_init (PengeCountTile *self)
                               "PengeCountMessageLabel");
 
   clutter_actor_show (priv->message_label);
-  mx_table_add_actor_with_properties (MX_TABLE (priv->table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->table),
                                       priv->message_label,
                                       0, 1,
                                       "x-expand", TRUE,
@@ -359,7 +359,7 @@ penge_count_tile_init (PengeCountTile *self)
                               "PengeCountAccountLabel");
 
   clutter_actor_show (priv->account_label);
-  mx_table_add_actor_with_properties (MX_TABLE (priv->table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->table),
                                       priv->account_label,
                                       1, 1,
                                       "x-expand", TRUE,
@@ -367,8 +367,8 @@ penge_count_tile_init (PengeCountTile *self)
   mx_table_set_column_spacing (MX_TABLE (priv->table), 12);
   clutter_actor_show (priv->table);
 
-  mx_bin_set_child (MX_BIN (self), priv->table);
-  mx_bin_set_fill (MX_BIN (self), TRUE, FALSE);
+  clutter_actor_add_child ((self), priv->table);
+  //mx_bin_set_fill ((self), TRUE, FALSE);
 }
 
 

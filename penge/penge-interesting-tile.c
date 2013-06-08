@@ -92,7 +92,7 @@ penge_interesting_tile_set_property (GObject *object, guint property_id,
       if (!priv->body)
         return;
 
-      mx_table_add_actor_with_properties (MX_TABLE (priv->inner_table),
+      mx_table_insert_actor_with_properties (MX_TABLE (priv->inner_table),
                                           priv->body,
                                           0, 0,
                                           "y-align", MX_ALIGN_START,
@@ -322,9 +322,9 @@ penge_interesting_tile_init (PengeInterestingTile *self)
   self->priv = priv;
 
   priv->inner_table = mx_table_new ();
-  mx_bin_set_child (MX_BIN (self),
+  clutter_actor_add_child((self),
                     priv->inner_table);
-  mx_bin_set_fill (MX_BIN (self), TRUE, TRUE);
+  //mx_bin_set_fill ((self), TRUE, TRUE);
 
   priv->primary_text = mx_label_new ();
   mx_stylable_set_style_class (MX_STYLABLE (priv->primary_text), 
@@ -361,7 +361,7 @@ penge_interesting_tile_init (PengeInterestingTile *self)
   mx_stylable_set_style_class (MX_STYLABLE (priv->details_overlay),
                                "PengeInterestingTileDetails");
 
-  mx_table_add_actor (MX_TABLE (priv->inner_table),
+  mx_table_insert_actor (MX_TABLE (priv->inner_table),
                       priv->details_overlay,
                       1,
                       0);
@@ -374,7 +374,7 @@ penge_interesting_tile_init (PengeInterestingTile *self)
                                "y-align", MX_ALIGN_END,
                                NULL);
 
-  mx_table_add_actor (MX_TABLE (priv->details_overlay),
+  mx_table_insert_actor (MX_TABLE (priv->details_overlay),
                       priv->primary_text,
                       0,
                       1);
@@ -387,7 +387,7 @@ penge_interesting_tile_init (PengeInterestingTile *self)
                                FALSE,
                                NULL);
 
-  mx_table_add_actor (MX_TABLE (priv->details_overlay),
+  mx_table_insert_actor (MX_TABLE (priv->details_overlay),
                       priv->secondary_text,
                       1,
                       1);
@@ -399,7 +399,7 @@ penge_interesting_tile_init (PengeInterestingTile *self)
                                FALSE,
                                NULL);
 
-  mx_table_add_actor (MX_TABLE (priv->details_overlay),
+  mx_table_insert_actor (MX_TABLE (priv->details_overlay),
                       priv->icon,
                       0,
                       0);
@@ -418,9 +418,9 @@ penge_interesting_tile_init (PengeInterestingTile *self)
   icon = (ClutterActor *)mx_icon_new ();
   mx_stylable_set_style_class (MX_STYLABLE (icon),
                                "PengeInterestingTileIcon");
-  mx_bin_set_child (MX_BIN (priv->remove_button),
+  clutter_actor_add_child ((priv->remove_button),
                       (ClutterActor *)icon);
-  mx_table_add_actor_with_properties (MX_TABLE (priv->details_overlay),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->details_overlay),
                                       priv->remove_button,
                                       0, 2,
                                       "row-span", 2,

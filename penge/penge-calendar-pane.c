@@ -17,7 +17,6 @@
  * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#include <config.h>
 #include <glib/gi18n-lib.h>
 
 #include "penge-calendar-pane.h"
@@ -470,7 +469,7 @@ penge_calendar_pane_init (PengeCalendarPane *self)
   /* Need to fix the size to avoid being squashed */
   clutter_actor_set_size (priv->calendar_tex, 27, 28);
 
-  mx_table_add_actor_with_properties (MX_TABLE (priv->events_header_table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->events_header_table),
                                       priv->calendar_tex,
                                       0, 0,
                                       "x-expand", FALSE,
@@ -484,7 +483,7 @@ penge_calendar_pane_init (PengeCalendarPane *self)
   label = mx_label_new_with_text (_("Appointments"));
   mx_stylable_set_style_class (MX_STYLABLE (label),
                                "PengeEventsPaneTitle");
-  mx_table_add_actor_with_properties (MX_TABLE (priv->events_header_table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->events_header_table),
                                       label,
                                       0, 1,
                                       "y-expand", TRUE,
@@ -498,7 +497,7 @@ penge_calendar_pane_init (PengeCalendarPane *self)
                     "clicked",
                     (GCallback)_events_open_button_clicked_cb,
                     NULL);
-  mx_table_add_actor_with_properties (MX_TABLE (priv->events_header_table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->events_header_table),
                                       button,
                                       0, 2,
                                       "y-expand", TRUE,
@@ -515,7 +514,7 @@ penge_calendar_pane_init (PengeCalendarPane *self)
   tasks_icon = mx_icon_new ();
   clutter_actor_set_name (tasks_icon, "tasks-icon");
 
-  mx_table_add_actor_with_properties (MX_TABLE (priv->tasks_header_table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->tasks_header_table),
                                       tasks_icon,
                                       0, 0,
                                       "x-expand", FALSE,
@@ -527,7 +526,7 @@ penge_calendar_pane_init (PengeCalendarPane *self)
   label = mx_label_new_with_text (_("Tasks"));
   mx_stylable_set_style_class (MX_STYLABLE (label),
                                "PengeTasksPaneTitle");
-  mx_table_add_actor_with_properties (MX_TABLE (priv->tasks_header_table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->tasks_header_table),
                                       label,
                                       0, 1,
                                       "y-expand", TRUE,
@@ -541,7 +540,7 @@ penge_calendar_pane_init (PengeCalendarPane *self)
                     "clicked",
                     (GCallback)_tasks_open_button_clicked_cb,
                     NULL);
-  mx_table_add_actor_with_properties (MX_TABLE (priv->tasks_header_table),
+  mx_table_insert_actor_with_properties (MX_TABLE (priv->tasks_header_table),
                                       button,
                                       0, 2,
                                       "y-expand", TRUE,

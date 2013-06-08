@@ -282,7 +282,7 @@ penge_app_tile_init (PengeAppTile *self)
   priv->tex = clutter_texture_new ();
   clutter_actor_set_size (priv->tex, ICON_SIZE, ICON_SIZE);
 
-  mx_bin_set_child (MX_BIN (self),
+  clutter_actor_add_child ((self),
                     priv->tex);
   g_signal_connect (self,
                     "clicked",

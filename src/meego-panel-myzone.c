@@ -18,7 +18,6 @@
  */
 
 #include <locale.h>
-#include <config.h>
 #include <glib/gi18n-lib.h>
 #include <clutter/clutter.h>
 #include <clutter/x11/clutter-x11.h>

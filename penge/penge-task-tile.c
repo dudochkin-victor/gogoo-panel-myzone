@@ -20,7 +20,6 @@
 #include <libjana/jana.h>
 #include <libjana-ecal/jana-ecal.h>
 
-#include <config.h>
 #include <glib/gi18n-lib.h>
 
 #include "penge-task-tile.h"
@@ -217,8 +216,8 @@ penge_task_tile_init (PengeTaskTile *self)
   self->priv = priv;
 
   priv->inner_table = mx_table_new ();
-  mx_bin_set_child (MX_BIN (self), (ClutterActor *)priv->inner_table);
-  mx_bin_set_fill (MX_BIN (self), TRUE, TRUE);
+  clutter_actor_add_child ( (self), (ClutterActor *)priv->inner_table);
+  //mx_bin_set_fill (MX_BIN (self), TRUE, TRUE);
 
   priv->check_button = mx_button_new ();
   mx_button_set_is_toggle (MX_BUTTON (priv->check_button), TRUE);
@@ -241,15 +240,15 @@ penge_task_tile_init (PengeTaskTile *self)
   clutter_text_set_single_line_mode (CLUTTER_TEXT (tmp_text), TRUE);
 
   /* Populate the table */
-  mx_table_add_actor (MX_TABLE (priv->inner_table),
+  mx_table_insert_actor (MX_TABLE (priv->inner_table),
                       (ClutterActor *)priv->check_button,
                       0,
                       0);
-  mx_table_add_actor (MX_TABLE (priv->inner_table),
+  mx_table_insert_actor (MX_TABLE (priv->inner_table),
                       (ClutterActor *)priv->summary_label,
                       0,
                       1);
-  mx_table_add_actor (MX_TABLE (priv->inner_table),
+  mx_table_insert_actor (MX_TABLE (priv->inner_table),
                       (ClutterActor *)priv->details_label,
                       1,
                       1);
